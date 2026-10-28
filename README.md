@@ -6,6 +6,8 @@ Trabalho final da disciplina **Machine Learning** — Pós-Graduação em IA Gen
 
 > **Status:** notebook concluído e executado do início ao fim (modelagem, avaliação e exportação do pipeline). API FastAPI, interface web e relatório em PDF em desenvolvimento.
 
+Divisão de tarefas do grupo e cronograma: [DIVISAO_TAREFAS.md](DIVISAO_TAREFAS.md).
+
 ## Objetivo
 
 Prever a resistência à compressão do concreto (variável contínua, em MPa) com um modelo de regressão, e disponibilizá-lo em uma interface onde o usuário informa os componentes da mistura e recebe o valor estimado.
