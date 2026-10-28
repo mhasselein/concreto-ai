@@ -1,0 +1,112 @@
+{
+  "projeto": "ConcretoAI",
+  "modelo": "Random Forest",
+  "features": [
+    "cimento",
+    "escoria",
+    "cinza_volante",
+    "agua",
+    "superplastificante",
+    "agregado_graudo",
+    "agregado_miudo",
+    "idade_dias"
+  ],
+  "alvo": "resistencia_mpa",
+  "unidade_resultado": "MPa",
+  "unidades": {
+    "cimento": "kg/m³",
+    "escoria": "kg/m³",
+    "cinza_volante": "kg/m³",
+    "agua": "kg/m³",
+    "superplastificante": "kg/m³",
+    "agregado_graudo": "kg/m³",
+    "agregado_miudo": "kg/m³",
+    "idade_dias": "dias",
+    "resistencia_mpa": "MPa"
+  },
+  "limites_operacionais_treino": {
+    "cimento": {
+      "min": 102.0,
+      "max": 540.0
+    },
+    "escoria": {
+      "min": 0.0,
+      "max": 359.4
+    },
+    "cinza_volante": {
+      "min": 0.0,
+      "max": 200.0
+    },
+    "agua": {
+      "min": 121.75,
+      "max": 247.0
+    },
+    "superplastificante": {
+      "min": 0.0,
+      "max": 32.2
+    },
+    "agregado_graudo": {
+      "min": 801.0,
+      "max": 1134.3
+    },
+    "agregado_miudo": {
+      "min": 594.0,
+      "max": 992.6
+    },
+    "idade_dias": {
+      "min": 1.0,
+      "max": 365.0
+    }
+  },
+  "exemplo_treino": {
+    "cimento": 540.0,
+    "escoria": 0.0,
+    "cinza_volante": 0.0,
+    "agua": 162.0,
+    "superplastificante": 2.5,
+    "agregado_graudo": 1040.0,
+    "agregado_miudo": 676.0,
+    "idade_dias": 28
+  },
+  "seed": 42,
+  "etapas_pipeline": [
+    "imputador",
+    "scaler",
+    "modelo"
+  ],
+  "pipeline_inclui_scaler": true,
+  "scaler_separado": "Artefato auxiliar; não aplicar antes de pipeline.predict.",
+  "rmse_medio_cv_mpa": 5.577728579696599,
+  "metricas_teste": {
+    "RMSE (MPa)": 4.672862372164607,
+    "MAE (MPa)": 3.4416380303838614,
+    "R²": 0.9064753956332108
+  },
+  "split": {
+    "metodo": "GroupShuffleSplit",
+    "fracao_grupos_teste": 0.2,
+    "grupos_por": [
+      "cimento",
+      "escoria",
+      "cinza_volante",
+      "agua",
+      "superplastificante",
+      "agregado_graudo",
+      "agregado_miudo",
+      "idade_dias"
+    ],
+    "linhas_treino": 803,
+    "linhas_teste": 202
+  },
+  "versoes": {
+    "python": "3.12.10",
+    "scikit-learn": "1.9.1",
+    "numpy": "2.5.3",
+    "pandas": "3.0.6",
+    "joblib": "1.6.0"
+  },
+  "fonte": "https://archive.ics.uci.edu/dataset/165/concrete+compressive+strength",
+  "doi": "https://doi.org/10.24432/C5PK67",
+  "licenca": "CC BY 4.0",
+  "credito": "I-Cheng Yeh"
+}

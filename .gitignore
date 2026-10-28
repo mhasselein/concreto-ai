@@ -1,0 +1,35 @@
+# Caches e temporários do Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Ambientes virtuais (a venv compartilhada fica em machine-learning/.venv)
+.venv/
+venv/
+
+# Arquivos de editor e sistema operacional
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporários e logs
+*.log
+*.tmp
+*.bak
+~$*
+
+# NÃO ignorar (necessários para reproduzir a entrega):
+#   data/raw/        -> dataset original
+#   models/*.joblib  -> pipeline treinado
+#   reports/         -> figuras, prints e PDF final
+
+# Instruções locais do assistente de IA (não versionar)
+CLAUDE.md
+.claude/
