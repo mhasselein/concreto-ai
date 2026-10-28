@@ -28,7 +28,7 @@ O que o professor pede: notebook executado, relatório em PDF (mínimo 5 página
 - Definiu o contrato do modelo para a interface (seção 13 do notebook).
 - Escreveu o README e este plano.
 
-**Daqui para frente:** revisar os pull requests, preencher o sobrenome no cabeçalho do notebook e fazer a leitura final do conjunto antes de entregar.
+**Daqui para frente:** revisar os pull requests, trocar os primeiros nomes pelos nomes completos (notebook e capa do relatório) e fazer a leitura final do conjunto antes de entregar.
 
 ## Eduardo — interface
 
