@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ConcretoAI</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header class="topo">
+    <div class="conteudo">
+      <h1>Concreto<span>AI</span></h1>
+      <p>Estimativa da resistência à compressão do concreto a partir da composição da mistura e da idade.</p>
+    </div>
+  </header>
+
+  <main class="conteudo grade">
+    <section class="cartao">
+      <h2>Composição da mistura</h2>
+      <p class="dica">Informe as quantidades por m³ de concreto. Use os valores dentro da faixa indicada abaixo de cada campo, que é a faixa observada no treino do modelo.</p>
+
+      <form id="formulario" novalidate>
+        <div id="campos" class="campos">
+          <p class="carregando">Carregando campos…</p>
+        </div>
+
+        <div id="erro-geral" class="erro-geral" role="alert" hidden></div>
+
+        <div class="acoes">
+          <button type="submit" id="botao-prever" class="botao-principal">Prever resistência</button>
+          <button type="button" id="botao-exemplo" class="botao-secundario">Exemplo aleatório</button>
+          <button type="button" id="botao-limpar" class="botao-secundario">Limpar</button>
+        </div>
+      </form>
+    </section>
+
+    <aside class="cartao resultado" aria-live="polite">
+      <h2>Resistência estimada</h2>
+      <div id="resultado-vazio" class="resultado-vazio">
+        Preencha os campos e clique em <strong>Prever resistência</strong>.
+      </div>
+      <div id="resultado-valor" class="resultado-valor" hidden>
+        <span id="valor-mpa">–</span>
+        <span class="unidade">MPa</span>
+      </div>
+      <p id="info-modelo" class="info-modelo"></p>
+      <p class="aviso">Estimativa estatística para fins acadêmicos. Não substitui ensaios de laboratório nem serve para aprovação de uso estrutural.</p>
+    </aside>
+  </main>
+
+  <footer class="rodape conteudo">
+    Dados: <a href="https://archive.ics.uci.edu/dataset/165/concrete+compressive+strength" target="_blank" rel="noopener">Concrete Compressive Strength (UCI)</a>, I-Cheng Yeh, CC BY 4.0.
+    Trabalho final de Machine Learning, PUC Minas.
+  </footer>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>
