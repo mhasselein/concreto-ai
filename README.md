@@ -4,7 +4,7 @@ Estimativa da **resistência à compressão do concreto (MPa)** a partir da comp
 
 Trabalho final da disciplina **Machine Learning** — Pós-Graduação em IA Generativa e Aplicações com LLMs, PUC Minas (Prof. Maurício Rodrigues da Silva).
 
-> **Status:** notebook concluído e executado do início ao fim (modelagem, avaliação e exportação do pipeline). API FastAPI, interface web e relatório em PDF em desenvolvimento.
+> **Status:** notebook concluído e executado do início ao fim (modelagem, avaliação e exportação do pipeline). API FastAPI e interface web concluídas. Relatório em PDF em desenvolvimento.
 
 Divisão de tarefas do grupo e cronograma: [DIVISAO_TAREFAS.md](DIVISAO_TAREFAS.md).
 
@@ -48,11 +48,12 @@ concreto-ai/
 │   └── processed/        # registro do split treino/teste
 ├── notebooks/            # notebook de experimento (.ipynb)
 ├── models/               # pipeline exportado (.joblib)
-├── static/               # frontend (index.html, CSS, JS)
+├── static/               # frontend (index.html, style.css, script.js)
 ├── reports/
 │   ├── figures/          # gráficos gerados pelo notebook
 │   └── screenshots/      # prints da interface
-└── (app.py)              # API FastAPI — a criar
+├── tests/                # testes automatizados da API (pytest)
+└── app.py                # API FastAPI (serve também a interface)
 ```
 
 ## Decisões de dados (resumo)
@@ -72,8 +73,41 @@ Na raiz do projeto, com a venv ativa (ver seção anterior):
 # 1. Notebook: abra notebooks/experimento.ipynb, selecione o kernel da venv e use Restart & Run All.
 #    Ele regenera os gráficos em reports/figures e o modelo em models/.
 
-# 2. Interface (disponível quando app.py estiver pronto):
+# 2. Interface:
 python -m uvicorn app:app --reload
+```
+
+Com o servidor rodando, abra **http://127.0.0.1:8000** no navegador. A documentação interativa da API fica em http://127.0.0.1:8000/docs.
+
+> No Windows, o `--reload` às vezes não recarrega depois de uma mudança no `app.py`. Se a tela não refletir a alteração, pare o servidor (Ctrl+C) e rode o comando de novo.
+
+## Interface
+
+A API (`app.py`) carrega `models/pipeline.joblib` e `models/metadata.json` **uma única vez**, na inicialização, e nunca retreina o modelo. As entradas vão para o pipeline em unidades originais: o scaler já está dentro dele, então `scaler.joblib` não é aplicado antes.
+
+| Rota | Função |
+| --- | --- |
+| `GET /` | Tela (`static/index.html`). |
+| `GET /api/metadata` | Campos, rótulos, unidades, faixas de treino e métricas; a tela monta o formulário a partir daqui. |
+| `GET /api/exemplo` | Sorteia uma mistura real do conjunto de treino (usada no botão *Exemplo aleatório*). |
+| `POST /api/prever` | Recebe as 8 entradas e devolve a resistência estimada, por exemplo `{"resistencia_mpa": 69.29, "unidade": "MPa"}`. |
+
+**Uso da tela:** preencha as 8 entradas (componentes em kg/m³ e idade em dias) e clique em *Prever resistência*. O botão *Exemplo aleatório* preenche os campos com uma mistura real do treino, e *Limpar* zera o formulário. Os números aceitam vírgula ou ponto como decimal e ponto como separador de milhar (`1.040`, `2,5`).
+
+**Validação:** é feita no navegador e repetida na API. Erros retornam HTTP 422 no formato `{"erros": [{"campo", "rotulo", "mensagem"}]}`, e a tela mostra a mensagem embaixo do campo correspondente. Casos tratados:
+
+- campo vazio ou ausente;
+- texto no lugar de número;
+- valor fora da faixa observada no treino (`limites_operacionais_treino` do `metadata.json`);
+- idade que não seja um número inteiro positivo de dias.
+
+**Teste de conferência:** com a entrada `exemplo_treino` do `metadata.json` (540 / 0 / 0 / 162 / 2,5 / 1040 / 676 / 28), a previsão deve ser **69,29 MPa**, igual à do notebook.
+
+**Testes automatizados:** `tests/test_api.py` cobre a previsão de conferência, os limites de cada faixa e todos os casos de erro acima, além das rotas de metadata, exemplo e da página. As dependências de teste ficam em `requirements-dev.txt` (não fazem parte da entrega):
+
+```powershell
+python -m pip install -r requirements-dev.txt
+python -m pytest
 ```
 
 ## Fonte dos dados
