@@ -80,7 +80,7 @@ function esconderResultado() {
 // Converte para o formato do JavaScript. Pontos em grupos de 3 dígitos são
 // separador de milhar ("1.040", "1.134,3"); fora disso, o ponto é decimal ("2.5").
 function normalizarNumero(texto) {
-  const semEspacos = texto.replace(/\s/g, "");
+  const semEspacos = texto.trim();
   if (/^[-+]?\d{1,3}(\.\d{3})+(,\d+)?$/.test(semEspacos)) {
     return semEspacos.replace(/\./g, "").replace(",", ".");
   }
