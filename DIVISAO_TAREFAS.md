@@ -8,11 +8,11 @@ O que o professor pede: notebook executado, relatório em PDF (mínimo 5 página
 
 | Integrante | Responsabilidade | Entrega principal | Situação |
 | --- | --- | --- | --- |
-| Mateus | Estrutura, dados, notebook e modelo | `notebooks/experimento.ipynb`, `models/`, `README.md` | **Concluído** |
-| Eduardo | Interface (FastAPI + HTML) | `app.py`, `static/index.html` | A fazer |
-| Paulo | Testes e prints da interface | `reports/screenshots/` | A fazer |
-| Yara | Relatório: parte técnica | Seções 1 a 5 do PDF | A fazer |
-| Carlos | Relatório: interface, conclusão e fechamento | Seções 6 e 7, PDF final e `.zip` | A fazer |
+| Mateus Hasselein | Estrutura, dados, notebook e modelo | `notebooks/experimento.ipynb`, `models/`, `README.md` | **Concluído** |
+| Eduardo Figueiredo de Lima Andrade | Interface (FastAPI + HTML) | `app.py`, `static/` | **Concluído** |
+| Paulo Henrique Gonçalves Campos | Testes e prints da interface | `reports/screenshots/` | **Concluído** |
+| Yara Vitoria Sampaio Braga | Relatório: parte técnica | Seções 1 a 4 do PDF | **Concluído** |
+| Carlos Bruno Gomes Cahú | Relatório: interface, conclusão e fechamento | Seções 5 e 6, PDF final e `.zip` | Seções 5 e 6 e PDF **concluídos**; falta o `.zip` |
 
 ## O que o Mateus já fez
 
@@ -28,7 +28,7 @@ O que o professor pede: notebook executado, relatório em PDF (mínimo 5 página
 - Definiu o contrato do modelo para a interface (seção 13 do notebook).
 - Escreveu o README e este plano.
 
-**Daqui para frente:** revisar os pull requests, trocar os primeiros nomes pelos nomes completos (notebook e capa do relatório) e fazer a leitura final do conjunto antes de entregar.
+**Daqui para frente:** fazer a leitura final do conjunto, montar o `.zip` e entregar no Portal do Aluno.
 
 ## Eduardo — interface
 
@@ -67,12 +67,11 @@ Branch: `testes`.
 
 Branch: `relatorio`. Fonte do texto em `reports/relatorio/` e PDF final em `reports/`.
 
-Seções:
-1. Capa (título, integrantes, data).
-2. Introdução (contexto, justificativa e objetivo).
-3. Dataset (fonte e citação do autor, 1030 registros, 1005 após remover duplicatas, descrição das colunas e um ou dois prints dos dados).
-4. Metodologia (pré-processamento, separação por grupos, modelos testados, validação cruzada e métricas).
-5. Resultados (tabela comparativa dos modelos, gráficos de `reports/figures/` e interpretação).
+Seções (a capa não é numerada):
+1. Introdução (contexto, justificativa e objetivo).
+2. Dataset (fonte e citação do autor, 1030 registros, 1005 após remover duplicatas, descrição das colunas e um ou dois prints dos dados).
+3. Metodologia (pré-processamento, separação por grupos, modelos testados, validação cruzada e métricas).
+4. Resultados (tabela comparativa dos modelos, gráficos de `reports/figures/` e interpretação).
 
 Todos os números e gráficos já estão no notebook e em `reports/`. Citar a fonte dos dados: I-Cheng Yeh, *Cement and Concrete Research*, 1998 (referência completa no cabeçalho do notebook).
 
@@ -81,8 +80,8 @@ Todos os números e gráficos já estão no notebook e em `reports/`. Citar a fo
 Branch: `relatorio-final`.
 
 Seções:
-6. Interface gráfica (descrição, instruções curtas de instalação e execução, os 3 prints do Paulo e uma breve explicação de uso).
-7. Conclusão (resumo, resposta ao problema, limitações e melhorias futuras), mais a **contribuição de cada integrante** (usar este documento) e o **link do GitHub** (bônus).
+5. Interface gráfica (descrição, instruções curtas de instalação e execução, os 3 prints do Paulo e uma breve explicação de uso).
+6. Conclusão (resumo, resposta ao problema, limitações e melhorias futuras), mais a **contribuição de cada integrante** (usar este documento) e o **link do GitHub** (bônus).
 
 Fechamento:
 - juntar as partes da Yara e do Carlos num único PDF, com pelo menos 5 páginas;
